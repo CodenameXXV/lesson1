@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок англійської мови №1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #4ecdc4;
+        }
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section h2::before {
+            content: "📚";
+            margin-right: 10px;
+        }
+        .numbers-grid, .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .number-card, .letter-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .number-card:hover, .letter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .word {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-top: 5px;
+        }
+        .letter {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .pronunciation {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        .phonetics-section {
+            background: #e8f5e8;
+            border-left-color: #27ae60;
+        }
+        .phonetics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .phonetics-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #27ae60;
+            transition: transform 0.3s ease;
+        }
+        .phonetics-card:hover {
+            transform: scale(1.05);
+        }
+        .english-word {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .transcription {
+            color: #e67e22;
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .grammar-section {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .grammar-table th, .grammar-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .grammar-table th {
+            background: #343a40;
+            color: white;
+            font-weight: bold;
+        }
+        .grammar-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .grammar-table tr:hover {
+            background: #e9ecef;
+        }
+        .exercise {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .exercise h3 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+        .quiz-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .quiz-option {
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+        .quiz-option.selected {
+            background: #007bff;
+            color: white;
+        }
+        .quiz-option.correct {
+            background: #28a745;
+            color: white;
+        }
+        .quiz-option.incorrect {
+            background: #dc3545;
+            color: white;
+        }
+        .check-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .check-btn:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .result.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .result.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .dialog-section {
+            margin-top: 20px;
+        }
+        .dialog-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #17a2b8;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dialog-line {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .speaker {
+            font-weight: bold;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .text {
+            font-style: italic;
+            margin-right: 10px;
+        }
+        .translation {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .dialog-line:nth-child(odd) .speaker {
+            color: #dc3545;
+        }
+        #dialogInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+            resize: vertical;
+        }
+        .homework-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .homework-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6f42c1;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .homework-card h4 {
+            color: #6f42c1;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .homework-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .homework-card li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .homework-card li:before {
+            content: "📝 ";
+            margin-right: 8px;
+        }
+        .completion-section {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+        .completion-section h2 {
+            color: white;
+        }
+        .completion-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .achievement-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .achievement-item:hover {
+            transform: scale(1.05);
+        }
+        .text-section {
+            background: #fff8e1;
+            border-left-color: #ffc107;
+        }
+        .text-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            border-left: 4px solid #ffc107;
+        }
+        .fill-blank {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .blank-item {
+            margin-bottom: 10px;
+        }
+        .blank-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        .check-fill-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .check-fill-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Урок англійської мови №1</h1>
+            <p>Числа, алфавіт, прикметники та дієслово "to be"</p>
+        </div>
+        <div class="content">
+            <!-- Числа 1-12 -->
+            <div class="section">
+                <h2>Числа від 1 до 12</h2>
+                <div class="numbers-grid">
+                    <div class="number-card">
+                        <div class="number">1</div>
+                        <div class="word">one</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">2</div>
+                        <div class="word">two</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">3</div>
+                        <div class="word">three</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">4</div>
+                        <div class="word">four</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">5</div>
+                        <div class="word">five</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">6</div>
+                        <div class="word">six</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">7</div>
+                        <div class="word">seven</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">8</div>
+                        <div class="word">eight</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">9</div>
+                        <div class="word">nine</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">10</div>
+                        <div class="word">ten</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">11</div>
+                        <div class="word">eleven</div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number">12</div>
+                        <div class="word">twelve</div>
+                    </div>
+                </div>
+                <!-- Вправа 1: Оберіть правильний переклад числа -->
+                <div class="exercise">
+                    <h3>Вправа 1: Оберіть правильний переклад числа</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як англійською буде "вісім"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">seven</div>
+                            <div class="quiz-option" data-answer="true">eight</div>
+                            <div class="quiz-option" data-answer="false">nine</div>
+                            <div class="quiz-option" data-answer="false">ten</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Знайдіть число за словом -->
+                <div class="exercise">
+                    <h3>Вправа 2: Знайдіть число за словом</h3>
+                    <div class="quiz-question">
+                        <p><strong>Яке число відповідає слову "eleven"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">10</div>
+                            <div class="quiz-option" data-answer="true">11</div>
+                            <div class="quiz-option" data-answer="false">12</div>
+                            <div class="quiz-option" data-answer="false">9</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 3: Співвіднесення -->
+                <div class="exercise">
+                    <h3>Вправа 3: Співвіднесіть число зі словом</h3>
+                    <div class="quiz-question">
+                        <p><strong>Виберіть слово, яке відповідає числу "5".</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">three</div>
+                            <div class="quiz-option" data-answer="false">four</div>
+                            <div class="quiz-option" data-answer="true">five</div>
+                            <div class="quiz-option" data-answer="false">six</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+				<!-- Вправа 4: Оберіть правильний переклад числа -->
+				<div class="exercise">
+					<h3>Вправа 4: Оберіть правильний переклад числа</h3>
+					<div class="quiz-question">
+						<p><strong>Як англійською буде "тринадцять"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">twelve</div>
+							<div class="quiz-option" data-answer="false">fourteen</div>
+							<div class="quiz-option" data-answer="true">thirteen</div>
+							<div class="quiz-option" data-answer="false">fifteen</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 5: Знайдіть число за словом -->
+				<div class="exercise">
+					<h3>Вправа 5: Знайдіть число за словом</h3>
+					<div class="quiz-question">
+						<p><strong>Яке число відповідає слову "seventeen"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">16</div>
+							<div class="quiz-option" data-answer="true">17</div>
+							<div class="quiz-option" data-answer="false">18</div>
+							<div class="quiz-option" data-answer="false">19</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 6: Співвіднесення -->
+				<div class="exercise">
+					<h3>Вправа 6: Співвіднесіть число зі словом</h3>
+					<div class="quiz-question">
+						<p><strong>Виберіть слово, яке відповідає числу "20".</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">twelve</div>
+							<div class="quiz-option" data-answer="false">two</div>
+							<div class="quiz-option" data-answer="false">ten</div>
+							<div class="quiz-option" data-answer="true">twenty</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 7: Оберіть правильний переклад числа -->
+				<div class="exercise">
+					<h3>Вправа 7: Оберіть правильний переклад числа</h3>
+					<div class="quiz-question">
+						<p><strong>Як англійською буде "шість"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">five</div>
+							<div class="quiz-option" data-answer="true">six</div>
+							<div class="quiz-option" data-answer="false">seven</div>
+							<div class="quiz-option" data-answer="false">four</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 8: Знайдіть число за словом -->
+				<div class="exercise">
+					<h3>Вправа 8: Знайдіть число за словом</h3>
+					<div class="quiz-question">
+						<p><strong>Яке число відповідає слову "fourteen"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">4</div>
+							<div class="quiz-option" data-answer="false">40</div>
+							<div class="quiz-option" data-answer="true">14</div>
+							<div class="quiz-option" data-answer="false">41</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 9: Співвіднесення -->
+				<div class="exercise">
+					<h3>Вправа 9: Співвіднесіть число зі словом</h3>
+					<div class="quiz-question">
+						<p><strong>Виберіть слово, яке відповідає числу "1".</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="true">one</div>
+							<div class="quiz-option" data-answer="false">once</div>
+							<div class="quiz-option" data-answer="false">won</div>
+							<div class="quiz-option" data-answer="false">on</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 10: Оберіть правильний переклад числа -->
+				<div class="exercise">
+					<h3>Вправа 10: Оберіть правильний переклад числа</h3>
+					<div class="quiz-question">
+						<p><strong>Як англійською буде "дев'ятнадцять"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">eighteen</div>
+							<div class="quiz-option" data-answer="true">nineteen</div>
+							<div class="quiz-option" data-answer="false">ninteen</div>
+							<div class="quiz-option" data-answer="false">ninty</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+            </div>
+            <!-- Алфавіт -->
+            <div class="section">
+                <h2>Англійський алфавіт</h2>
+                <div class="alphabet-grid">
+                    <div class="letter-card"><div class="letter">A a</div><div class="pronunciation">[ей]</div></div>
+                    <div class="letter-card"><div class="letter">B b</div><div class="pronunciation">[бі]</div></div>
+                    <div class="letter-card"><div class="letter">C c</div><div class="pronunciation">[сі]</div></div>
+                    <div class="letter-card"><div class="letter">D d</div><div class="pronunciation">[ді]</div></div>
+                    <div class="letter-card"><div class="letter">E e</div><div class="pronunciation">[і]</div></div>
+                    <div class="letter-card"><div class="letter">F f</div><div class="pronunciation">[еф]</div></div>
+                    <div class="letter-card"><div class="letter">G g</div><div class="pronunciation">[джі]</div></div>
+                    <div class="letter-card"><div class="letter">H h</div><div class="pronunciation">[ейч]</div></div>
+                    <div class="letter-card"><div class="letter">I i</div><div class="pronunciation">[ай]</div></div>
+                    <div class="letter-card"><div class="letter">J j</div><div class="pronunciation">[джей]</div></div>
+                    <div class="letter-card"><div class="letter">K k</div><div class="pronunciation">[кей]</div></div>
+                    <div class="letter-card"><div class="letter">L l</div><div class="pronunciation">[ел]</div></div>
+                    <div class="letter-card"><div class="letter">M m</div><div class="pronunciation">[ем]</div></div>
+                    <div class="letter-card"><div class="letter">N n</div><div class="pronunciation">[ен]</div></div>
+                    <div class="letter-card"><div class="letter">O o</div><div class="pronunciation">[оу]</div></div>
+                    <div class="letter-card"><div class="letter">P p</div><div class="pronunciation">[пі]</div></div>
+                    <div class="letter-card"><div class="letter">Q q</div><div class="pronunciation">[к'ю]</div></div>
+                    <div class="letter-card"><div class="letter">R r</div><div class="pronunciation">[ар]</div></div>
+                    <div class="letter-card"><div class="letter">S s</div><div class="pronunciation">[ес]</div></div>
+                    <div class="letter-card"><div class="letter">T t</div><div class="pronunciation">[ті]</div></div>
+                    <div class="letter-card"><div class="letter">U u</div><div class="pronunciation">[ю]</div></div>
+                    <div class="letter-card"><div class="letter">V v</div><div class="pronunciation">[ві]</div></div>
+                    <div class="letter-card"><div class="letter">W w</div><div class="pronunciation">[дабл-ю]</div></div>
+                    <div class="letter-card"><div class="letter">X x</div><div class="pronunciation">[екс]</div></div>
+                    <div class="letter-card"><div class="letter">Y y</div><div class="pronunciation">[вай]</div></div>
+                    <div class="letter-card"><div class="letter">Z z</div><div class="pronunciation">[зет]</div></div>
+                </div>
+                <!-- Вправа 1: Вимова букви -->
+                <div class="exercise">
+                    <h3>Вправа 1: Як вимовляється буква?</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як вимовляється буква "G"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">[гі]</div>
+                            <div class="quiz-option" data-answer="true">[джі]</div>
+                            <div class="quiz-option" data-answer="false">[ге]</div>
+                            <div class="quiz-option" data-answer="false">[гей]</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Знайдіть букву за вимовою -->
+                <div class="exercise">
+                    <h3>Вправа 2: Знайдіть букву за вимовою</h3>
+                    <div class="quiz-question">
+                        <p><strong>Яка буква вимовляється як [дабл-ю]?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">V</div>
+                            <div class="quiz-option" data-answer="true">W</div>
+                            <div class="quiz-option" data-answer="false">U</div>
+                            <div class="quiz-option" data-answer="false">Y</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 3: Порядок букв -->
+                <div class="exercise">
+                    <h3>Вправа 3: Порядок букв</h3>
+                    <div class="quiz-question">
+                        <p><strong>Яка буква йде після "M" в алфавіті?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">L</div>
+                            <div class="quiz-option" data-answer="true">N</div>
+                            <div class="quiz-option" data-answer="false">O</div>
+                            <div class="quiz-option" data-answer="false">P</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+				<!-- Вправа 4: Як вимовляється буква? -->
+				<div class="exercise">
+					<h3>Вправа 4: Як вимовляється буква?</h3>
+					<div class="quiz-question">
+						<p><strong>Як вимовляється буква "J"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">[йот]</div>
+							<div class="quiz-option" data-answer="false">[гей]</div>
+							<div class="quiz-option" data-answer="true">[джей]</div>
+							<div class="quiz-option" data-answer="false">[жі]</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 5: Знайдіть букву за вимовою -->
+				<div class="exercise">
+					<h3>Вправа 5: Знайдіть букву за вимовою</h3>
+					<div class="quiz-question">
+						<p><strong>Яка буква вимовляється як [ес]?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">C</div>
+							<div class="quiz-option" data-answer="false">Z</div>
+							<div class="quiz-option" data-answer="true">S</div>
+							<div class="quiz-option" data-answer="false">X</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 6: Порядок букв -->
+				<div class="exercise">
+					<h3>Вправа 6: Порядок букв</h3>
+					<div class="quiz-question">
+						<p><strong>Яка буква йде перед "F" в алфавіті?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">G</div>
+							<div class="quiz-option" data-answer="true">E</div>
+							<div class="quiz-option" data-answer="false">D</div>
+							<div class="quiz-option" data-answer="false">H</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 7: Як вимовляється буква? -->
+				<div class="exercise">
+					<h3>Вправа 7: Як вимовляється буква?</h3>
+					<div class="quiz-question">
+						<p><strong>Як вимовляється буква "Q"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">[кві]</div>
+							<div class="quiz-option" data-answer="true">[к'ю]</div>
+							<div class="quiz-option" data-answer="false">[кі]</div>
+							<div class="quiz-option" data-answer="false">[кей]</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 8: Знайдіть букву за вимовою -->
+				<div class="exercise">
+					<h3>Вправа 8: Знайдіть букву за вимовою</h3>
+					<div class="quiz-question">
+						<p><strong>Яка буква вимовляється як [ар]?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">A</div>
+							<div class="quiz-option" data-answer="false">B</div>
+							<div class="quiz-option" data-answer="true">R</div>
+							<div class="quiz-option" data-answer="false">P</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+            </div>
+            <!-- Фонетика -->
+            <div class="section phonetics-section">
+                <h2>Читання букви A в відкритому складі</h2>
+                <p><strong>Буква А в відкритому складі читається як [eɪ] (ей)</strong></p>
+                <div class="phonetics-grid">
+                    <div class="phonetics-card">
+                        <div class="english-word">plate</div>
+                        <div class="transcription">[pleɪt]</div>
+                        <div>тарілка</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">place</div>
+                        <div class="transcription">[pleɪs]</div>
+                        <div>місце</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">name</div>
+                        <div class="transcription">[neɪm]</div>
+                        <div>ім'я</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">take</div>
+                        <div class="transcription">[teɪk]</div>
+                        <div>брати</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">late</div>
+                        <div class="transcription">[leɪt]</div>
+                        <div>пізно</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">face</div>
+                        <div class="transcription">[feɪs]</div>
+                        <div>обличчя</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">table</div>
+                        <div class="transcription">['teɪbl]</div>
+                        <div>стіл</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">make</div>
+                        <div class="transcription">[meɪk]</div>
+                        <div>робити</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">cake</div>
+                        <div class="transcription">[keɪk]</div>
+                        <div>торт</div>
+                    </div>
+                </div>
+                <!-- Вправа 1: Транскрипція слова -->
+                <div class="exercise">
+                    <h3>Вправа 1: Транскрипція слова</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як правильно читається слово "name"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">[næm]</div>
+                            <div class="quiz-option" data-answer="true">[neɪm]</div>
+                            <div class="quiz-option" data-answer="false">[nɑːm]</div>
+                            <div class="quiz-option" data-answer="false">[nem]</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Знайдіть слово за транскрипцією -->
+                <div class="exercise">
+                    <h3>Вправа 2: Знайдіть слово за транскрипцією</h3>
+                    <div class="quiz-question">
+                        <p><strong>Яке слово має транскрипцію [teɪk]?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">talk</div>
+                            <div class="quiz-option" data-answer="true">take</div>
+                            <div class="quiz-option" data-answer="false">tack</div>
+                            <div class="quiz-option" data-answer="false">tick</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 3: Вибір слова з правильною вимовою -->
+                <div class="exercise">
+                    <h3>Вправа 3: Вибір слова з правильною вимовою</h3>
+                    <div class="quiz-question">
+                        <p><strong>Виберіть слово, де буква "A" читається як [eɪ].</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">cat</div>
+                            <div class="quiz-option" data-answer="true">cake</div>
+                            <div class="quiz-option" data-answer="false">hat</div>
+                            <div class="quiz-option" data-answer="false">map</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+				<!-- Вправа 4: Транскрипція слова -->
+				<div class="exercise">
+					<h3>Вправа 4: Транскрипція слова</h3>
+					<div class="quiz-question">
+						<p><strong>Як правильно читається слово "game"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">[gæm]</div>
+							<div class="quiz-option" data-answer="true">[geɪm]</div>
+							<div class="quiz-option" data-answer="false">[gɑːm]</div>
+							<div class="quiz-option" data-answer="false">[gem]</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 5: Знайдіть слово за транскрипцією -->
+				<div class="exercise">
+					<h3>Вправа 5: Знайдіть слово за транскрипцією</h3>
+					<div class="quiz-question">
+						<p><strong>Яке слово має транскрипцію [seɪv]?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">save (зберігати)</div>
+							<div class="quiz-option" data-answer="true">save</div>
+							<div class="quiz-option" data-answer="false">seve</div>
+							<div class="quiz-option" data-answer="false">sive</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 6: Вибір слова з правильною вимовою -->
+				<div class="exercise">
+					<h3>Вправа 6: Вибір слова з правильною вимовою</h3>
+					<div class="quiz-question">
+						<p><strong>Виберіть слово, де буква "A" читається як [eɪ].</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">apple</div>
+							<div class="quiz-option" data-answer="false">and</div>
+							<div class="quiz-option" data-answer="true">plane</div>
+							<div class="quiz-option" data-answer="false">ant</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 7: Транскрипція слова (з іншою голосною) -->
+				<div class="exercise">
+					<h3>Вправа 7: Транскрипція слова</h3>
+					<div class="quiz-question">
+						<p><strong>Як правильно читається слово "like"?</strong></p>
+						<p><em>Буква "I" у відкритому складі часто читається як [aɪ]</em></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">[lɪk]</div>
+							<div class="quiz-option" data-answer="true">[laɪk]</div>
+							<div class="quiz-option" data-answer="false">[lek]</div>
+							<div class="quiz-option" data-answer="false">[lɑːk]</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 8: Вибір слова з правильною вимовою -->
+				<div class="exercise">
+					<h3>Вправа 8: Вибір слова з правильною вимовою</h3>
+					<div class="quiz-question">
+						<p><strong>Виберіть слово, де буква "O" читається як [əʊ] (оу).</strong></p>
+						<p><em>Аналогічно до [eɪ], але для літери O</em></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">dog</div>
+							<div class="quiz-option" data-answer="false">hot</div>
+							<div class="quiz-option" data-answer="true">home</div>
+							<div class="quiz-option" data-answer="false">box</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+            </div>
+
+            <!-- Новий розділ: Текст для читання -->
+            <div class="section text-section">
+                <h2>Текст для читання</h2>
+                <div class="text-content">
+                    Read the text.<br><br>
+                    Tom is tall and rich. He lives in a big house. His brother Sam is short and plump, but he is very kind.<br>
+                    Their sister Anna is thin and good. She always helps her friends and family.<br>
+                    One day they meet Nick. Nick is bad and often worried. He does not like to play with others.<br>
+                    Tom tries to talk to Nick. Sam gives him some sweets. Anna tells him a funny story.<br>
+                    At the end, Nick feels better. He smiles and says: “You are good friends!”
+                </div>
+
+                <!-- Вправа 1: True/False -->
+                <div class="exercise">
+                    <h3>Вправа 1: True/False (Правда/Неправда)</h3>
+                    <p>Прочитай речення і познач, чи воно правильне.</p>
+                    
+                    <div class="quiz-question">
+                        <p><strong>Tom is tall and rich.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="true">True</div>
+                            <div class="quiz-option" data-answer="false">False</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>Sam is thin and good.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">True</div>
+                            <div class="quiz-option" data-answer="true">False</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>Anna is short and plump.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">True</div>
+                            <div class="quiz-option" data-answer="true">False</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>Nick is often worried.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="true">True</div>
+                            <div class="quiz-option" data-answer="false">False</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>At the end, Nick smiles.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="true">True</div>
+                            <div class="quiz-option" data-answer="false">False</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+
+                <!-- Вправа 2: Заповни пропуски -->
+                <div class="exercise">
+                    <h3>Вправа 2: Заповни пропуски словами (tall, rich, short, plump, thin, good, bad, worried)</h3>
+                    
+                    <div class="fill-blank">
+                        <div class="blank-item">
+                            <label>Tom is ______ and ______.</label>
+                            <input type="text" class="blank-input" id="blank1-1" placeholder="Перше слово">
+                            <input type="text" class="blank-input" id="blank1-2" placeholder="Друге слово">
+                        </div>
+                        <div class="blank-item">
+                            <label>Sam is ______ and ______.</label>
+                            <input type="text" class="blank-input" id="blank2-1" placeholder="Перше слово">
+                            <input type="text" class="blank-input" id="blank2-2" placeholder="Друге слово">
+                        </div>
+                        <div class="blank-item">
+                            <label>Anna is ______ and ______.</label>
+                            <input type="text" class="blank-input" id="blank3-1" placeholder="Перше слово">
+                            <input type="text" class="blank-input" id="blank3-2" placeholder="Друге слово">
+                        </div>
+                        <div class="blank-item">
+                            <label>Nick is ______ and ______.</label>
+                            <input type="text" class="blank-input" id="blank4-1" placeholder="Перше слово">
+                            <input type="text" class="blank-input" id="blank4-2" placeholder="Друге слово">
+                        </div>
+                    </div>
+                    
+                    <button class="check-fill-btn" onclick="checkFillBlanks()">Перевірити відповіді</button>
+                    <div id="fillResult" class="result" style="display:none; margin-top: 15px;"></div>
+                </div>
+            </div>
+
+            <!-- Прикметники -->
+            <div class="section">
+                <h2>Прикметники</h2>
+                <div class="phonetics-grid">
+                    <div class="phonetics-card">
+                        <div class="english-word">tall</div>
+                        <div class="transcription">[tɔːl]</div>
+                        <div>високий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">short</div>
+                        <div class="transcription">[ʃɔːt]</div>
+                        <div>низький</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">rich</div>
+                        <div class="transcription">[rɪtʃ]</div>
+                        <div>багатий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">bad</div>
+                        <div class="transcription">[bæd]</div>
+                        <div>поганий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">plump</div>
+                        <div class="transcription">[plʌmp]</div>
+                        <div>пухкенький</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">thin</div>
+                        <div class="transcription">[θɪn]</div>
+                        <div>худенький</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">fast</div>
+                        <div class="transcription">[fɑːst]</div>
+                        <div>швидкий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">slow</div>
+                        <div class="transcription">[sləʊ]</div>
+                        <div>повільний</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">old</div>
+                        <div class="transcription">[əʊld]</div>
+                        <div>старий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">young</div>
+                        <div class="transcription">[jʌŋ]</div>
+                        <div>молодий</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">good</div>
+                        <div class="transcription">[ɡʊd]</div>
+                        <div>хороший</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">surprised</div>
+                        <div class="transcription">[sə'praɪzd]</div>
+                        <div>здивований</div>
+                    </div>
+                </div>
+                <!-- Вправа 1: Антоніми -->
+                <div class="exercise">
+                    <h3>Вправа 1: Знайдіть антонім</h3>
+                    <div class="quiz-question">
+                        <p><strong>Який антонім до слова "tall" (високий)?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">big</div>
+                            <div class="quiz-option" data-answer="true">short</div>
+                            <div class="quiz-option" data-answer="false">small</div>
+                            <div class="quiz-option" data-answer="false">thin</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Переклад прикметника -->
+                <div class="exercise">
+                    <h3>Вправа 2: Переклад прикметника</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як перекладається слово "plump"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">худенький</div>
+                            <div class="quiz-option" data-answer="true">пухкенький</div>
+                            <div class="quiz-option" data-answer="false">високий</div>
+                            <div class="quiz-option" data-answer="false">низький</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 3: Вибір прикметника за описом -->
+                <div class="exercise">
+                    <h3>Вправа 3: Вибір прикметника за описом</h3>
+                    <div class="quiz-question">
+                        <p><strong>Який прикметник описує людину, яка багато заробляє?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">old</div>
+                            <div class="quiz-option" data-answer="false">slow</div>
+                            <div class="quiz-option" data-answer="true">rich</div>
+                            <div class="quiz-option" data-answer="false">bad</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+				<!-- Вправа 4: Знайдіть антонім -->
+				<div class="exercise">
+					<h3>Вправа 4: Знайдіть антонім</h3>
+					<div class="quiz-question">
+						<p><strong>Який антонім до слова "fast" (швидкий)?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">quick</div>
+							<div class="quiz-option" data-answer="true">slow</div>
+							<div class="quiz-option" data-answer="false">old</div>
+							<div class="quiz-option" data-answer="false">thin</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 5: Переклад прикметника -->
+				<div class="exercise">
+					<h3>Вправа 5: Переклад прикметника</h3>
+					<div class="quiz-question">
+						<p><strong>Як перекладається слово "surprised"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">засмучений</div>
+							<div class="quiz-option" data-answer="false">сердитий</div>
+							<div class="quiz-option" data-answer="true">здивований</div>
+							<div class="quiz-option" data-answer="false">втомлений</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 6: Вибір прикметника за описом -->
+				<div class="exercise">
+					<h3>Вправа 6: Вибір прикметника за описом</h3>
+					<div class="quiz-question">
+						<p><strong>Який прикметник підходить до людини, якій 80 років?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">young</div>
+							<div class="quiz-option" data-answer="true">old</div>
+							<div class="quiz-option" data-answer="false">rich</div>
+							<div class="quiz-option" data-answer="false">good</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 7: Знайдіть антонім -->
+				<div class="exercise">
+					<h3>Вправа 7: Знайдіть антонім</h3>
+					<div class="quiz-question">
+						<p><strong>Який антонім до слова "good" (хороший)?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="true">bad</div>
+							<div class="quiz-option" data-answer="false">sad</div>
+							<div class="quiz-option" data-answer="false">mad</div>
+							<div class="quiz-option" data-answer="false">plump</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 8: Переклад прикметника -->
+				<div class="exercise">
+					<h3>Вправа 8: Переклад прикметника</h3>
+					<div class="quiz-question">
+						<p><strong>Як перекладається слово "thin"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">пухкенький</div>
+							<div class="quiz-option" data-answer="true">худенький</div>
+							<div class="quiz-option" data-answer="false">низький</div>
+							<div class="quiz-option" data-answer="false">старий</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 9: Вибір прикметника за описом -->
+				<div class="exercise">
+					<h3>Вправа 9: Вибір прикметника за описом</h3>
+					<div class="quiz-question">
+						<p><strong>Який прикметник підходить до людини, якій 10 років?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">old</div>
+							<div class="quiz-option" data-answer="true">young</div>
+							<div class="quiz-option" data-answer="false">slow</div>
+							<div class="quiz-option" data-answer="false">bad</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 10: Знайдіть антонім -->
+				<div class="exercise">
+					<h3>Вправа 10: Знайдіть антонім</h3>
+					<div class="quiz-question">
+						<p><strong>Який антонім до слова "rich" (багатий)?</strong></p>
+						<p><em>Хоча це слово не в списку, логічно — "бідний", але серед варіантів є лише протилежні за контекстом</em></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">good</div>
+							<div class="quiz-option" data-answer="false">young</div>
+							<div class="quiz-option" data-answer="true">bad</div> <!-- умовний антонім у моральному/оціночному сенсі -->
+							<div class="quiz-option" data-answer="false">plump</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+            </div>
+            <!-- Граматика -->
+            <div class="section grammar-section">
+                <h2>Дієслово "to be" (бути)</h2>
+                <p><strong>Дієслово "to be" змінюється залежно від підмета:</strong></p>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Підмет</th>
+                            <th>Повна форма</th>
+                            <th>Скорочена форма</th>
+                            <th>Заперечення</th>
+                            <th>Переклад</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>I (я)</td>
+                            <td>I am</td>
+                            <td>I'm</td>
+                            <td>I am not</td>
+                            <td>Я є/знаходжуся</td>
+                        </tr>
+                        <tr>
+                            <td>He/She/It (він/вона/воно)</td>
+                            <td>He/She/It is</td>
+                            <td>He's/She's/It's</td>
+                            <td>He/She/It is not</td>
+                            <td>Він/вона/воно є</td>
+                        </tr>
+                        <tr>
+                            <td>You/We/They (ти/ми/вони)</td>
+                            <td>You/We/They are</td>
+                            <td>You're/We're/They're</td>
+                            <td>You/We/They are not</td>
+                            <td>Ти/ми/вони є</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 style="margin-top: 30px; color: #2c3e50;">Приклади речень:</h3>
+                <div class="phonetics-grid" style="margin-top: 20px;">
+                    <div class="phonetics-card">
+                        <div class="english-word">I am tall.</div>
+                        <div>Я високий/висока.</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">She is young.</div>
+                        <div>Вона молода.</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">They are fast.</div>
+                        <div>Вони швидкі.</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">I am not old.</div>
+                        <div>Я не старий/стара.</div>
+                    </div>
+                </div>
+                <!-- Вправа 1: Оберіть форму дієслова -->
+                <div class="exercise">
+                    <h3>Вправа 1: Оберіть правильну форму дієслова "to be"</h3>
+                    <div class="quiz-question">
+                        <p><strong>She ___ very tall.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">am</div>
+                            <div class="quiz-option" data-answer="true">is</div>
+                            <div class="quiz-option" data-answer="false">are</div>
+                            <div class="quiz-option" data-answer="false">be</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Заперечення -->
+                <div class="exercise">
+                    <h3>Вправа 2: Утворіть заперечення</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як правильно сказати "Я не багатий"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">I am rich.</div>
+                            <div class="quiz-option" data-answer="true">I am not rich.</div>
+                            <div class="quiz-option" data-answer="false">I not am rich.</div>
+                            <div class="quiz-option" data-answer="false">I are not rich.</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 3: Вибір для множини -->
+                <div class="exercise">
+                    <h3>Вправа 3: Вибір для множини</h3>
+                    <div class="quiz-question">
+                        <p><strong>My friends ___ very surprised today.</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">am</div>
+                            <div class="quiz-option" data-answer="false">is</div>
+                            <div class="quiz-option" data-answer="true">are</div>
+                            <div class="quiz-option" data-answer="false">be</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+				<!-- Вправа 4: Оберіть форму дієслова -->
+				<div class="exercise">
+					<h3>Вправа 4: Оберіть правильну форму дієслова "to be"</h3>
+					<div class="quiz-question">
+						<p><strong>We ___ students.</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">am</div>
+							<div class="quiz-option" data-answer="false">is</div>
+							<div class="quiz-option" data-answer="true">are</div>
+							<div class="quiz-option" data-answer="false">be</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 5: Заперечення -->
+				<div class="exercise">
+					<h3>Вправа 5: Утворіть заперечення</h3>
+					<div class="quiz-question">
+						<p><strong>Як правильно сказати "Він не старий"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">He is old.</div>
+							<div class="quiz-option" data-answer="true">He is not old.</div>
+							<div class="quiz-option" data-answer="false">He not is old.</div>
+							<div class="quiz-option" data-answer="false">He are not old.</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 6: Питальна форма -->
+				<div class="exercise">
+					<h3>Вправа 6: Питальна форма</h3>
+					<div class="quiz-question">
+						<p><strong>Як правильно задати питання: "Are you happy?" — у заперечній формі?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">You are not happy?</div>
+							<div class="quiz-option" data-answer="true">Aren’t you happy?</div>
+							<div class="quiz-option" data-answer="false">Are not you happy?</div>
+							<div class="quiz-option" data-answer="false">Not are you happy?</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 7: Вибір для займенника -->
+				<div class="exercise">
+					<h3>Вправа 7: Вибір для займенника</h3>
+					<div class="quiz-question">
+						<p><strong>___ I late? (Чи я запізнився?)</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="true">Am</div>
+							<div class="quiz-option" data-answer="false">Is</div>
+							<div class="quiz-option" data-answer="false">Are</div>
+							<div class="quiz-option" data-answer="false">Be</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 8: Скорочена форма -->
+				<div class="exercise">
+					<h3>Вправа 8: Скорочена форма</h3>
+					<div class="quiz-question">
+						<p><strong>Яка скорочена форма від "She is not young"?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">She’s young.</div>
+							<div class="quiz-option" data-answer="true">She isn’t young.</div>
+							<div class="quiz-option" data-answer="false">She not’s young.</div>
+							<div class="quiz-option" data-answer="false">She are not young.</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 9: Вибір для іменника -->
+				<div class="exercise">
+					<h3>Вправа 9: Вибір для іменника</h3>
+					<div class="quiz-question">
+						<p><strong>The cat ___ very fast.</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">am</div>
+							<div class="quiz-option" data-answer="true">is</div>
+							<div class="quiz-option" data-answer="false">are</div>
+							<div class="quiz-option" data-answer="false">be</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+				<!-- Вправа 10: Питання з "you" -->
+				<div class="exercise">
+					<h3>Вправа 10: Питання з "you"</h3>
+					<div class="quiz-question">
+						<p><strong>___ you and your brother at home?</strong></p>
+						<div class="quiz-options">
+							<div class="quiz-option" data-answer="false">Am</div>
+							<div class="quiz-option" data-answer="false">Is</div>
+							<div class="quiz-option" data-answer="true">Are</div>
+							<div class="quiz-option" data-answer="false">Be</div>
+						</div>
+						<button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+						<div class="result" style="display:none;"></div>
+					</div>
+				</div>
+            </div>
+            <!-- Додатковий розділ: Часові вирази -->
+            <div class="section">
+                <h2>Часові вирази</h2>
+                <div class="phonetics-grid">
+                    <div class="phonetics-card">
+                        <div class="english-word">today</div>
+                        <div class="transcription">[təˈdeɪ]</div>
+                        <div>сьогодні</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">now</div>
+                        <div class="transcription">[naʊ]</div>
+                        <div>зараз</div>
+                    </div>
+                    <div class="phonetics-card">
+                        <div class="english-word">every day</div>
+                        <div class="transcription">[ˈevri deɪ]</div>
+                        <div>кожного дня</div>
+                    </div>
+                </div>
+                <!-- Вправа 1: Переклад виразу -->
+                <div class="exercise">
+                    <h3>Вправа 1: Переклад виразу</h3>
+                    <div class="quiz-question">
+                        <p><strong>Як перекладається "every day"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">сьогодні</div>
+                            <div class="quiz-option" data-answer="false">зараз</div>
+                            <div class="quiz-option" data-answer="true">кожного дня</div>
+                            <div class="quiz-option" data-answer="false">завтра</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+                <!-- Вправа 2: Вибір виразу за контекстом -->
+                <div class="exercise">
+                    <h3>Вправа 2: Вибір виразу за контекстом</h3>
+                    <div class="quiz-question">
+                        <p><strong>Який вираз означає "у цей момент"?</strong></p>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="false">today</div>
+                            <div class="quiz-option" data-answer="true">now</div>
+                            <div class="quiz-option" data-answer="false">every day</div>
+                            <div class="quiz-option" data-answer="false">yesterday</div>
+                        </div>
+                        <button class="check-btn" onclick="checkAnswer(this)">Перевірити</button>
+                        <div class="result" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Практичні діалоги -->
+            <div class="section">
+                <h2>Практичні діалоги</h2>
+                <div class="dialog-section">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">Знайомство</h3>
+                    <div class="dialog-card">
+                        <div class="dialog-line">
+                            <span class="speaker">A:</span> 
+                            <span class="text">Hello! I am Mary. I am tall and young.</span>
+                            <span class="translation">Привіт! Я Мері. Я висока і молода.</span>
+                        </div>
+                        <div class="dialog-line">
+                            <span class="speaker">B:</span> 
+                            <span class="text">Hi! I'm Tom. I am not tall, I'm short.</span>
+                            <span class="translation">Привіт! Я Том. Я не високий, я низький.</span>
+                        </div>
+                        <div class="dialog-line">
+                            <span class="speaker">A:</span> 
+                            <span class="text">Nice to meet you, Tom!</span>
+                            <span class="translation">Приємно познайомитися, Том!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <h3>Вправа: Створіть власний діалог</h3>
+                    <p>Використайте прикметники та форми дієслова "to be" для створення короткого діалогу знайомства:</p>
+                    <textarea id="dialogInput" rows="5" cols="50" placeholder="Напишіть свій діалог тут..."></textarea>
+                    <br>
+                    <button class="check-btn" onclick="saveDialog()">Зберегти діалог</button>
+                    <div id="dialogResult" class="result" style="display:none;"></div>
+                </div>
+            </div>
+            <!-- Додаткові ресурси -->
+            <div class="section">
+                <h2>Додаткові завдання для самостійної роботи</h2>
+                <div class="homework-section">
+                    <div class="homework-card">
+                        <h4>📚 Домашнє завдання</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Вивчіть числа від 1 до 12 напам'ять</li>
+                            <li>Потренуйтеся читати слова з буквою A в відкритому складі</li>
+                            <li>Створіть 5 речень, використовуючи прикметники та дієслово "to be"</li>
+                            <li>Напишіть короткий опис себе англійською мовою</li>
+                        </ul>
+                    </div>
+                    <div class="homework-card">
+                        <h4>🎯 Корисні поради</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Повторюйте новi слова щодня по 10-15 хвилин</li>
+                            <li>Слухайте англійські пісні та намагайтеся розпізнати знайомі слова</li>
+                            <li>Практикуйте вимову перед дзеркалом</li>
+                            <li>Ведіть словничок нових слів</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Завершення уроку -->
+            <div class="section completion-section">
+                <h2>🎉 Вітаємо з завершенням уроку!</h2>
+                <div class="completion-card">
+                    <p>Ви вивчили основи англійської мови:</p>
+                    <div class="achievement-list">
+                        <div class="achievement-item">✅ Числа від 1 до 12</div>
+                        <div class="achievement-item">✅ Англійський алфавіт</div>
+                        <div class="achievement-item">✅ Читання букви A в відкритому складі</div>
+                        <div class="achievement-item">✅ Основні прикметники</div>
+                        <div class="achievement-item">✅ Дієслово "to be"</div>
+                        <div class="achievement-item">✅ Часові вирази</div>
+                    </div>
+                    <p style="margin-top: 20px; font-weight: bold; color: #28a745;">
+                        Продовжуйте навчання і незабаром ви зможете вільно спілкуватися англійською!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkAnswer(button) {
+            const question = button.parentElement;
+            const options = question.querySelectorAll('.quiz-option');
+            const result = question.querySelector('.result');
+            let selectedOption = null;
+            let correctOption = null;
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    selectedOption = option;
+                }
+                if (option.getAttribute('data-answer') === 'true') {
+                    correctOption = option;
+                }
+            });
+            if (!selectedOption) {
+                alert('Будь ласка, оберіть варіант відповіді!');
+                return;
+            }
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option.getAttribute('data-answer') === 'true') {
+                    option.classList.add('correct');
+                } else if (option.classList.contains('selected')) {
+                    option.classList.add('incorrect');
+                }
+            });
+            if (selectedOption.getAttribute('data-answer') === 'true') {
+                result.className = 'result correct';
+                result.textContent = 'Правильно! Молодець! 🎉';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = 'Неправильно. Правильна відповідь: ' + correctOption.textContent;
+            }
+            result.style.display = 'block';
+            button.style.display = 'none';
+        }
+
+        function checkFillBlanks() {
+            const resultDiv = document.getElementById('fillResult');
+            
+            // Correct answers
+            const correctAnswers = [
+                ['tall', 'rich'],
+                ['short', 'plump'],
+                ['thin', 'good'],
+                ['bad', 'worried']
+            ];
+            
+            let allCorrect = true;
+            let userAnswers = [];
+            
+            // Get user answers
+            for (let i = 1; i <= 4; i++) {
+                const word1 = document.getElementById(`blank${i}-1`).value.trim().toLowerCase();
+                const word2 = document.getElementById(`blank${i}-2`).value.trim().toLowerCase();
+                userAnswers.push([word1, word2]);
+                
+                // Check if answers are correct (allowing for either order for pairs 2,3,4)
+                if (i === 1) {
+                    if (word1 !== 'tall' || word2 !== 'rich') {
+                        allCorrect = false;
+                    }
+                } else {
+                    const correctSet = new Set(correctAnswers[i-1]);
+                    const userSet = new Set([word1, word2]);
+                    if (![...userSet].every(x => correctSet.has(x)) || userSet.size !== correctSet.size) {
+                        allCorrect = false;
+                    }
+                }
+            }
+            
+            if (allCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.textContent = 'Відмінно! Всі відповіді правильні! 🎉';
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.textContent = 'Деякі відповіді неправильні. Спробуйте ще раз!';
+            }
+            resultDiv.style.display = 'block';
+        }
+
+        function saveDialog() {
+            const dialogInput = document.getElementById('dialogInput');
+            const dialogResult = document.getElementById('dialogResult');
+            if (dialogInput.value.trim() === '') {
+                alert('Будь ласка, напишіть діалог!');
+                return;
+            }
+            dialogResult.className = 'result correct';
+            dialogResult.textContent = 'Ваш діалог збережено! Продовжуйте практикувати! 💬';
+            dialogResult.style.display = 'block';
+        }
+
+        // Додаємо обробник кліку для опцій відповідей
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('quiz-option')) {
+                const question = e.target.closest('.quiz-question');
+                const options = question.querySelectorAll('.quiz-option');
+                options.forEach(option => {
+                    option.classList.remove('selected');
+                });
+                e.target.classList.add('selected');
+            }
+        });
+
+        // Анімація появи карток
+        function animateCards() {
+            const cards = document.querySelectorAll('.number-card, .letter-card, .phonetics-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50);
+            });
+        }
+
+        window.addEventListener('load', animateCards);
+    </script>
+</body>
+</html>
